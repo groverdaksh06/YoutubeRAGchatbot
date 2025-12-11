@@ -46,9 +46,9 @@ def get_transcript(video_id, language):
 # function to translate the transcript into english.
     # initialize the gemini model
 llm= ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash-lite",
+    model="gemini-2.5-flash",
     temperature=0.2
-)
+    )
 
 
 def translate_transcript(transcript):
@@ -148,7 +148,7 @@ def create_chunks(transcript):
 
 # function to create embedding and store it into an vector space.
 def create_vector_store(docs):
-    embedding= GoogleGenerativeAIEmbeddings(model="models/embedding-001", transport="grpc" )
+    embedding= GoogleGenerativeAIEmbeddings(model="gemini-embedding-001", transport="grpc" )
     vector_store= Chroma.from_documents(docs, embedding)
     return vector_store
 
